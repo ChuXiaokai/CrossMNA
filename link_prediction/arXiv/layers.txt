@@ -1,0 +1,14 @@
+layerID layerLabel
+1 physics.soc-ph
+2 physics.data-an
+3 physics.bio-ph
+4 math-ph
+5 math.OC
+6 cond-mat.dis-nn
+7 cond-mat.stat-mech
+8 q-bio.MN
+9 q-bio
+10 q-bio.BM
+11 nlin.AO
+12 cs.SI
+13 cs.CV

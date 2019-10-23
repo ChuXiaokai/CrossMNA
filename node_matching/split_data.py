@@ -58,14 +58,14 @@ def split_dataset(path, p, dir):
     keep_anchor_nodes_in_each_layer = dict([[i, []] for i in networks.keys()])  # anchor nodes keep in each layer
 
     """
-    对于任意一层的节点v，如果它在测试集中，那么它将与任何一层对应点的anchor link都将会被移除
+    对于任意一层的节点v，如果它在测试集中，那么它与任何一层对应点的anchor link都将会被移除
     """
     for e in keep_anchor_links:
         layeri, layerj, n = e
         keep_anchor_nodes_in_each_layer[layeri].append(n)
         keep_anchor_nodes_in_each_layer[layerj].append(n)
 
-    # generate the new network
+    # generate a new network
     new_network = {}
     for layerid in networks:
         newid2node = {}
@@ -83,7 +83,7 @@ def split_dataset(path, p, dir):
         """
         For fair comparison, 
         instead of removing anchor links from training set, we directly remove the anchor nodes.
-        This will avoid data leakage caused by global consistent.
+        This will avoid test data leakage caused by global consistent.
         """
         for n in this_layer_nodes:
             if not n in keep_nodes:

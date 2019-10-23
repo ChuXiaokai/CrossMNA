@@ -17,7 +17,7 @@ parser.add_argument('--dataset', default='Twitter', type=str)
 parser.add_argument('--node-dim', default=200, type=int)
 parser.add_argument('--layer-dim', default=100, type=int)
 parser.add_argument('--batch-size', default=512, type=int)
-parser.add_argument('--neg-samples', default=1, type=int)
+parser.add_argument('--neg-samples', default=5, type=int)
 parser.add_argument('--output', default='node2vec.pk', type=str)
 args = parser.parse_args()
 

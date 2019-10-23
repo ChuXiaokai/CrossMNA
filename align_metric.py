@@ -29,7 +29,7 @@ def eval_emb(network_path, embeddings):
     need_compare = dict([ [i,{}]  for i in layerids])
     cur_layer_nodes = dict([ [i,{}] for i in layerids])
 
-    a1 = time.clock()
+
     for i in layerids:
         need_compare_node = sorted(networks[i]['newid2node'].keys())
 
@@ -50,8 +50,6 @@ def eval_emb(network_path, embeddings):
 
         cur_layer_nodes[i]['total_true_node'] = total_true_node
 
-    a2 = time.clock()
-    print a2-a1
 
     precision_in_each_layer = []
     for i in layerids:
