@@ -12,7 +12,7 @@ parser = ArgumentParser("network alignment",
                           formatter_class=ArgumentDefaultsHelpFormatter,
                           conflict_handler='resolve')
 parser.add_argument('--task', default='NetworkAlignment', type=str)
-parser.add_argument("--p", default=0.5, type=str)
+parser.add_argument("--p", default=0.3, type=str)
 parser.add_argument('--dataset', default='Twitter', type=str)
 parser.add_argument('--node-dim', default=200, type=int)
 parser.add_argument('--layer-dim', default=100, type=int)
