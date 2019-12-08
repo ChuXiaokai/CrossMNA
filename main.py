@@ -60,9 +60,9 @@ with tf.Session(config=config) as sess:
     tf.global_variables_initializer().run()
     initial_embedding = sess.run(model.embedding)
 
-    for epoch in range(100):
+    for epoch in range(200):
         t = time.clock()
-        batches = gen_batches(layers, batch_size=args.batch_size, K=1)
+        batches = gen_batches(layers, batch_size=args.batch_size, K=args.neg_samples)
         print("epoch {0}: time for generate batches={1}s".format(epoch, time.clock()-t))
 
         total_loss = 0.0
