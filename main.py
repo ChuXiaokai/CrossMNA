@@ -12,12 +12,12 @@ parser = ArgumentParser("network alignment",
                           formatter_class=ArgumentDefaultsHelpFormatter,
                           conflict_handler='resolve')
 parser.add_argument('--task', default='NetworkAlignment', type=str)
-parser.add_argument("--p", default=0.3, type=str)
+parser.add_argument("--p", default=0.5, type=str)
 parser.add_argument('--dataset', default='Twitter', type=str)
-parser.add_argument('--node-dim', default=200, type=int)
-parser.add_argument('--layer-dim', default=100, type=int)
-parser.add_argument('--batch-size', default=512, type=int)
-parser.add_argument('--neg-samples', default=5, type=int)
+parser.add_argument('--node-dim', default=200, type=int, help='d1')
+parser.add_argument('--layer-dim', default=100, type=int, help='d2')
+parser.add_argument('--batch-size', default=512*8, type=int)
+parser.add_argument('--neg-samples', default=1, type=int)
 parser.add_argument('--output', default='node2vec.pk', type=str)
 args = parser.parse_args()
 
@@ -60,7 +60,7 @@ with tf.Session(config=config) as sess:
     tf.global_variables_initializer().run()
     initial_embedding = sess.run(model.embedding)
 
-    for epoch in range(200):
+    for epoch in range(401):
         t = time.clock()
         batches = gen_batches(layers, batch_size=args.batch_size, K=args.neg_samples)
         print("epoch {0}: time for generate batches={1}s".format(epoch, time.clock()-t))
@@ -76,7 +76,7 @@ with tf.Session(config=config) as sess:
             total_loss += loss
         print("epoch {0}: time for training={1}, total_loss={2}s".format(epoch, time.clock()-t, total_loss))
 
-        if epoch  ==  99:
+        if epoch % 50 == 0 and epoch > 1:
             if args.task == 'NetworkAlignment':
                 each_layer_nodes = {}
                 inter_vectors = sess.run(model.embedding)

@@ -155,7 +155,6 @@ def load_edgelist(edgelist, undirected=True):
     G.check_edges()
     return G
 
-
 def readfile(graph_path=None):
     # load network structures
     graphs = pd.read_csv(graph_path, sep=' ', header=None)
@@ -184,7 +183,6 @@ def readfile(graph_path=None):
 
     num_nodes = max((id2node.keys()))+1
     return layers, num_nodes, id2node
-
 
 def get_alignment_emb(inter_vectors, layers, id2node):
     # generate node2vec for each layer
